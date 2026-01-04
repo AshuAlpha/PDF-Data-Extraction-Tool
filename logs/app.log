@@ -25,3 +25,12 @@
 2026-01-04 09:58:05,811 | INFO | Page 3 scale_x=4.17, scale_y=4.17
 2026-01-04 09:58:05,850 | INFO | Page 3: 1 table(s) detected
 2026-01-04 09:58:05,850 | INFO | Phase 2 completed successfully
+2026-01-04 11:56:35,167 | INFO | Starting Phase 3
+2026-01-04 11:58:20,233 | INFO | Starting Phase 3
+2026-01-04 11:58:23,615 | INFO | Page 1: 1 table(s)
+2026-01-04 11:58:23,619 | INFO | Page 1 | Table 1: 9 cells detected
+2026-01-04 11:58:23,658 | INFO | Page 2: 1 table(s)
+2026-01-04 11:58:23,659 | INFO | Page 2 | Table 1: 16 cells detected
+2026-01-04 11:58:23,702 | INFO | Page 3: 1 table(s)
+2026-01-04 11:58:23,704 | INFO | Page 3 | Table 1: 37 cells detected
+2026-01-04 11:58:23,705 | INFO | Phase 3 completed successfully
