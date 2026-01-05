@@ -8,6 +8,8 @@ from src.table_detector import preprocess_image, detect_table_lines, detect_tabl
 from src.row_column_detector import detect_row_column_lines
 from src.cell_detector import detect_cells
 
+# Main execution function: Advanced Table and Cell Detection
+
 def main():
     config = load_config()
     logger = setup_logger(config["log_path"])
