@@ -1,13 +1,3 @@
-"""
-text_cell_mapper.py
-
-Responsible for mapping extracted PDF words to detected table cells.
-"""
-
-# --------------------------------------------------
-# STEP 4.1 — Coordinate Conversion Helper
-# --------------------------------------------------
-
 def pdf_word_to_image_coords(word, scale_x, scale_y):
     """
     Convert PDF word coordinates to image coordinates.
@@ -19,11 +9,6 @@ def pdf_word_to_image_coords(word, scale_x, scale_y):
 
     return x0, y0, x1, y1
 
-
-# --------------------------------------------------
-# STEP 4.2 — Check if Word Lies Inside Cell
-# --------------------------------------------------
-
 def is_word_inside_cell(word_bbox, cell_bbox):
     wx0, wy0, wx1, wy1 = word_bbox
     cx, cy, cw, ch = cell_bbox
@@ -34,11 +19,6 @@ def is_word_inside_cell(word_bbox, cell_bbox):
         wy0 >= cy and
         wy1 <= cy + ch
     )
-
-
-# --------------------------------------------------
-# STEP 4.3 — Map Words to Cells
-# --------------------------------------------------
 
 def map_text_to_cells(cells, page_words, scale_x, scale_y):
     """
