@@ -16,6 +16,7 @@ from src.row_column_detector import detect_row_column_lines
 from src.cell_detector import detect_cells
 from src.text_cell_mapper import map_text_to_cells
 
+extracted_tables = []
 def main():
     
     print("✅ Code started successfully")
@@ -39,7 +40,7 @@ def main():
     )
     
     # ==================================================
-    # PHASE 3 + 4 + 5 (page-wise pipeline)
+    # PHASE 3 + 4 + 5 + 6 (page-wise pipeline)
     # ==================================================
 
     for page_idx, page in enumerate(pdf.pages, start=1):
@@ -90,7 +91,7 @@ def main():
             
             
             # ------------------------------------------
-            # Reconstruct table (Phase 5)
+            # Phase 5: Reconstruct table 
             # ------------------------------------------
             
             logger.info("Starting Phase 5")
@@ -110,6 +111,33 @@ def main():
             # TEMP: display table
             print(f"\n=== Page {page_idx} | Table {t_idx} ===")
             print(df)
+            
+    # -----------------------------
+    # PHASE 6: Excel collection init
+    # -----------------------------      
+            
+            extracted_tables.append({
+                "page": page_idx,
+                "table": t_idx,
+                "dataframe": df
+            })
+            
+    # Final Excel Writing        
+    output_path = config["excel_output_path"]
+    output_dir = os.path.dirname(output_path)
+
+    # Ensure output directory exists (extra safe)
+    os.makedirs(output_dir, exist_ok=True)
+
+    if extracted_tables:
+        write_tables_to_excel(
+            tables=extracted_tables,
+            output_path=output_path
+        )
+        logger.info(f"Excel file created at {output_path}")
+    else:
+        logger.warning("No tables found. Excel file not generated.")       
+
             
 
             # TEMP: print first few cells for validation

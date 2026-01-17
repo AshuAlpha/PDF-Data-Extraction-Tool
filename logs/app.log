@@ -162,3 +162,112 @@
 2026-01-16 22:57:23,483 | INFO | Page 3 | Table 1: Table reconstructed with shape (6, 7)
 2026-01-16 22:57:23,483 | INFO | Phase 5 completed successfully
 2026-01-16 22:57:23,508 | INFO | Pipeline completed successfully
+2026-01-17 17:52:18,860 | INFO | Starting Pipeline
+2026-01-17 17:52:25,318 | INFO | Processing Page 1
+2026-01-17 17:52:25,484 | INFO | Page 1: 1 table(s) detected
+2026-01-17 17:52:25,488 | INFO | Page 1 | Table 1: 9 cells detected
+2026-01-17 17:52:25,490 | INFO | Page 1 | Table 1: 9 cell values mapped
+2026-01-17 17:52:25,490 | INFO | Starting Phase 5
+2026-01-17 17:52:25,500 | INFO | Page 1 | Table 1: Table reconstructed with shape (4, 3)
+2026-01-17 17:52:25,500 | INFO | Phase 5 completed successfully
+2026-01-17 17:52:25,550 | INFO | Processing Page 2
+2026-01-17 17:52:25,671 | INFO | Page 2: 1 table(s) detected
+2026-01-17 17:52:25,682 | INFO | Page 2 | Table 1: 16 cells detected
+2026-01-17 17:52:25,699 | INFO | Page 2 | Table 1: 16 cell values mapped
+2026-01-17 17:52:25,700 | INFO | Starting Phase 5
+2026-01-17 17:52:25,719 | INFO | Page 2 | Table 1: Table reconstructed with shape (5, 4)
+2026-01-17 17:52:25,719 | INFO | Phase 5 completed successfully
+2026-01-17 17:52:25,757 | INFO | Processing Page 3
+2026-01-17 17:52:25,898 | INFO | Page 3: 1 table(s) detected
+2026-01-17 17:52:25,945 | INFO | Page 3 | Table 1: 37 cells detected
+2026-01-17 17:52:25,959 | INFO | Page 3 | Table 1: 37 cell values mapped
+2026-01-17 17:52:25,959 | INFO | Starting Phase 5
+2026-01-17 17:52:25,980 | INFO | Page 3 | Table 1: Table reconstructed with shape (6, 7)
+2026-01-17 17:52:25,980 | INFO | Phase 5 completed successfully
+2026-01-17 17:52:26,044 | INFO | Pipeline completed successfully
+2026-01-17 18:38:06,848 | INFO | Starting Pipeline
+2026-01-17 18:38:07,583 | INFO | Processing Page 1
+2026-01-17 18:38:07,662 | INFO | Page 1: 1 table(s) detected
+2026-01-17 18:38:07,665 | INFO | Page 1 | Table 1: 9 cells detected
+2026-01-17 18:38:07,665 | INFO | Page 1 | Table 1: 9 cell values mapped
+2026-01-17 18:38:07,665 | INFO | Starting Phase 5
+2026-01-17 18:38:07,666 | INFO | Page 1 | Table 1: Table reconstructed with shape (4, 3)
+2026-01-17 18:38:07,666 | INFO | Phase 5 completed successfully
+2026-01-17 18:38:40,349 | INFO | Starting Pipeline
+2026-01-17 18:38:41,083 | INFO | Processing Page 1
+2026-01-17 18:38:41,131 | INFO | Page 1: 1 table(s) detected
+2026-01-17 18:38:41,133 | INFO | Page 1 | Table 1: 9 cells detected
+2026-01-17 18:38:41,134 | INFO | Page 1 | Table 1: 9 cell values mapped
+2026-01-17 18:38:41,134 | INFO | Starting Phase 5
+2026-01-17 18:38:41,134 | INFO | Page 1 | Table 1: Table reconstructed with shape (4, 3)
+2026-01-17 18:38:41,134 | INFO | Phase 5 completed successfully
+2026-01-17 18:41:06,266 | INFO | Starting Pipeline
+2026-01-17 18:41:07,535 | INFO | Processing Page 1
+2026-01-17 18:41:07,619 | INFO | Page 1: 1 table(s) detected
+2026-01-17 18:41:07,621 | INFO | Page 1 | Table 1: 9 cells detected
+2026-01-17 18:41:07,621 | INFO | Page 1 | Table 1: 9 cell values mapped
+2026-01-17 18:41:07,621 | INFO | Starting Phase 5
+2026-01-17 18:41:07,625 | INFO | Page 1 | Table 1: Table reconstructed with shape (4, 3)
+2026-01-17 18:41:07,625 | INFO | Phase 5 completed successfully
+2026-01-17 18:55:13,423 | INFO | Starting Pipeline
+2026-01-17 18:55:14,186 | INFO | Processing Page 1
+2026-01-17 18:55:14,260 | INFO | Page 1: 1 table(s) detected
+2026-01-17 18:55:14,262 | INFO | Page 1 | Table 1: 9 cells detected
+2026-01-17 18:55:14,263 | INFO | Page 1 | Table 1: 9 cell values mapped
+2026-01-17 18:55:14,263 | INFO | Starting Phase 5
+2026-01-17 18:55:14,265 | INFO | Page 1 | Table 1: Table reconstructed with shape (4, 3)
+2026-01-17 18:55:14,265 | INFO | Phase 5 completed successfully
+2026-01-17 19:12:16,333 | INFO | Starting Pipeline
+2026-01-17 19:12:17,146 | INFO | Processing Page 1
+2026-01-17 19:12:17,226 | INFO | Page 1: 1 table(s) detected
+2026-01-17 19:12:17,227 | INFO | Page 1 | Table 1: 9 cells detected
+2026-01-17 19:12:17,228 | INFO | Page 1 | Table 1: 9 cell values mapped
+2026-01-17 19:12:17,228 | INFO | Starting Phase 5
+2026-01-17 19:12:17,233 | INFO | Page 1 | Table 1: Table reconstructed with shape (4, 3)
+2026-01-17 19:12:17,233 | INFO | Phase 5 completed successfully
+2026-01-17 19:36:23,983 | INFO | Starting Pipeline
+2026-01-17 19:36:24,777 | INFO | Processing Page 1
+2026-01-17 19:36:24,861 | INFO | Page 1: 1 table(s) detected
+2026-01-17 19:36:24,863 | INFO | Page 1 | Table 1: 9 cells detected
+2026-01-17 19:36:24,863 | INFO | Page 1 | Table 1: 9 cell values mapped
+2026-01-17 19:36:24,865 | INFO | Starting Phase 5
+2026-01-17 19:36:24,867 | INFO | Page 1 | Table 1: Table reconstructed with shape (4, 3)
+2026-01-17 19:36:24,867 | INFO | Phase 5 completed successfully
+2026-01-17 19:36:24,876 | INFO | Processing Page 2
+2026-01-17 19:36:24,916 | INFO | Page 2: 1 table(s) detected
+2026-01-17 19:36:24,927 | INFO | Page 2 | Table 1: 16 cells detected
+2026-01-17 19:36:24,927 | INFO | Page 2 | Table 1: 16 cell values mapped
+2026-01-17 19:36:24,927 | INFO | Starting Phase 5
+2026-01-17 19:36:24,927 | INFO | Page 2 | Table 1: Table reconstructed with shape (5, 4)
+2026-01-17 19:36:24,927 | INFO | Phase 5 completed successfully
+2026-01-17 19:36:24,932 | INFO | Processing Page 3
+2026-01-17 19:36:24,980 | INFO | Page 3: 1 table(s) detected
+2026-01-17 19:36:24,984 | INFO | Page 3 | Table 1: 37 cells detected
+2026-01-17 19:36:24,984 | INFO | Page 3 | Table 1: 37 cell values mapped
+2026-01-17 19:36:24,985 | INFO | Starting Phase 5
+2026-01-17 19:36:24,985 | INFO | Page 3 | Table 1: Table reconstructed with shape (6, 7)
+2026-01-17 19:36:24,985 | INFO | Phase 5 completed successfully
+2026-01-17 19:41:02,007 | INFO | Starting Pipeline
+2026-01-17 19:41:02,845 | INFO | Processing Page 1
+2026-01-17 19:41:02,903 | INFO | Page 1: 1 table(s) detected
+2026-01-17 19:41:02,905 | INFO | Page 1 | Table 1: 9 cells detected
+2026-01-17 19:41:02,905 | INFO | Page 1 | Table 1: 9 cell values mapped
+2026-01-17 19:41:02,905 | INFO | Starting Phase 5
+2026-01-17 19:41:02,905 | INFO | Page 1 | Table 1: Table reconstructed with shape (4, 3)
+2026-01-17 19:41:02,905 | INFO | Phase 5 completed successfully
+2026-01-17 19:41:02,909 | INFO | Processing Page 2
+2026-01-17 19:41:02,972 | INFO | Page 2: 1 table(s) detected
+2026-01-17 19:41:02,974 | INFO | Page 2 | Table 1: 16 cells detected
+2026-01-17 19:41:02,976 | INFO | Page 2 | Table 1: 16 cell values mapped
+2026-01-17 19:41:02,976 | INFO | Starting Phase 5
+2026-01-17 19:41:02,976 | INFO | Page 2 | Table 1: Table reconstructed with shape (5, 4)
+2026-01-17 19:41:02,976 | INFO | Phase 5 completed successfully
+2026-01-17 19:41:02,980 | INFO | Processing Page 3
+2026-01-17 19:41:03,036 | INFO | Page 3: 1 table(s) detected
+2026-01-17 19:41:03,040 | INFO | Page 3 | Table 1: 37 cells detected
+2026-01-17 19:41:03,040 | INFO | Page 3 | Table 1: 37 cell values mapped
+2026-01-17 19:41:03,042 | INFO | Starting Phase 5
+2026-01-17 19:41:03,042 | INFO | Page 3 | Table 1: Table reconstructed with shape (6, 7)
+2026-01-17 19:41:03,042 | INFO | Phase 5 completed successfully
+2026-01-17 19:41:03,299 | INFO | Excel file created at E:/Python/PDF-Data-Extraction-Tool/Output/extracted_output.xlsx
+2026-01-17 19:41:03,299 | INFO | Pipeline completed successfully
