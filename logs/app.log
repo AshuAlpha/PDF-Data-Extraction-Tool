@@ -271,3 +271,19 @@
 2026-01-17 19:41:03,042 | INFO | Phase 5 completed successfully
 2026-01-17 19:41:03,299 | INFO | Excel file created at E:/Python/PDF-Data-Extraction-Tool/Output/extracted_output.xlsx
 2026-01-17 19:41:03,299 | INFO | Pipeline completed successfully
+2026-01-18 15:14:04,061 | INFO | Starting PDF \u2192 Excel Extraction Pipeline
+2026-01-18 15:14:46,491 | INFO | Starting PDF \u2192 Excel Extraction Pipeline
+2026-01-18 15:17:04,125 | INFO | Starting PDF \u2192 Excel Extraction Pipeline
+2026-01-18 15:17:06,266 | INFO | Processing Page 1
+2026-01-18 15:17:06,336 | INFO | Page 1: 1 table(s) detected
+2026-01-18 15:17:06,336 | INFO | Page 1 | Table 1: Processing
+2026-01-18 15:17:06,342 | INFO | Page 1 | Table 1: Reconstructed table with shape (4, 3)
+2026-01-18 15:17:06,342 | INFO | Processing Page 2
+2026-01-18 15:17:06,382 | INFO | Page 2: 1 table(s) detected
+2026-01-18 15:17:06,383 | INFO | Page 2 | Table 1: Processing
+2026-01-18 15:17:06,384 | INFO | Page 2 | Table 1: Reconstructed table with shape (5, 4)
+2026-01-18 15:17:06,384 | INFO | Processing Page 3
+2026-01-18 15:17:06,426 | INFO | Page 3: 1 table(s) detected
+2026-01-18 15:17:06,426 | INFO | Page 3 | Table 1: Processing
+2026-01-18 15:17:06,428 | INFO | Page 3 | Table 1: Reconstructed table with shape (6, 7)
+2026-01-18 15:17:06,828 | INFO | Excel successfully created at: F:/PROJECTS/PDF Data Extraction Tool/Output/extracted_output.xlsx

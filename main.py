@@ -1,148 +1,155 @@
-import sys
-import os
-
-# Add project root to Python path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
-
 from src.pdf_loader import load_pdf
 from src.text_extractor import extract_text_with_coordinates
 from src.config_loader import load_config
 from src.logger import setup_logger
+
 from src.pdf_to_image import pdf_pages_to_images
 from src.geometry import compute_scale_factor
-from src.table_detector import preprocess_image, detect_table_lines, detect_tables
+
+from src.table_detector import (
+    preprocess_image,
+    detect_table_lines,
+    detect_tables
+)
+
 from src.row_column_detector import detect_row_column_lines
 from src.cell_detector import detect_cells
 from src.text_cell_mapper import map_text_to_cells
 
-extracted_tables = []
+from src.table_reconstructor import (
+    group_cells_by_rows,
+    rows_to_2d_list,
+    build_dataframe
+)
+
+from src.excel_writer import write_tables_to_excel
+
+
 def main():
-    
-    print("✅ Code started successfully")
-    
-    # -----------------------------
-    # Load config & setup logger ONCE
-    # -----------------------------
-    
+    # --------------------------------------------------
+    # Load configuration & logger
+    # --------------------------------------------------
     config = load_config()
     logger = setup_logger(config["log_path"])
 
-    logger.info("Starting Phase 4")
+    logger.info("Starting PDF → Excel Extraction Pipeline")
 
+    # --------------------------------------------------
+    # Phase 1: Load PDF & extract text with coordinates
+    # --------------------------------------------------
     pdf = load_pdf(config["pdf_input_path"])
     pages_text = extract_text_with_coordinates(pdf, config, logger)
 
+    # --------------------------------------------------
+    # Phase 2: Convert PDF pages → images (in-memory)
+    # --------------------------------------------------
     images = pdf_pages_to_images(
         config["pdf_input_path"],
         dpi=300,
         poppler_path=config.get("poppler_path")
     )
-    
-    # ==================================================
-    # PHASE 3 + 4 + 5 + 6 (page-wise pipeline)
-    # ==================================================
 
+    all_tables = []  # collect all extracted tables
+
+    # --------------------------------------------------
+    # Process each page
+    # --------------------------------------------------
     for page_idx, page in enumerate(pdf.pages, start=1):
+        logger.info(f"Processing Page {page_idx}")
+
         image = images[page_idx - 1]
         page_words = pages_text.get(page_idx, [])
 
+        if not page_words:
+            logger.warning(f"Page {page_idx}: No text found")
+
+        # Compute PDF → image scale factors
         scale_x, scale_y = compute_scale_factor(page, image)
 
+        # --------------------------------------------------
+        # Phase 2: Detect table regions
+        # --------------------------------------------------
         thresh = preprocess_image(image)
         table_mask = detect_table_lines(thresh)
         tables = detect_tables(table_mask)
 
-        for t_idx, (tx, ty, tw, th) in enumerate(tables, start=1):
-            table_img = image[ty:ty+th, tx:tx+tw]
-            
-            # -------------------------------------
-            # PHASE 4: Cell Detection + Mapping
-            # ------------------------------------
+        logger.info(f"Page {page_idx}: {len(tables)} table(s) detected")
 
+        # --------------------------------------------------
+        # Process each table on the page
+        # --------------------------------------------------
+        for table_idx, (tx, ty, tw, th) in enumerate(tables, start=1):
+            logger.info(f"Page {page_idx} | Table {table_idx}: Processing")
+
+            # Crop table region
+            table_img = image[ty:ty + th, tx:tx + tw]
+
+            # --------------------------------------------------
+            # Phase 3: Detect rows, columns & cells
+            # --------------------------------------------------
             h_lines, v_lines = detect_row_column_lines(table_img)
-            cells = detect_cells(h_lines, v_lines)
+            raw_cells = detect_cells(h_lines, v_lines)
 
+            if not raw_cells:
+                logger.warning(
+                    f"Page {page_idx} | Table {table_idx}: No cells detected"
+                )
+                continue
+
+            # --------------------------------------------------
+            # Convert table-local cell coords → full image coords
+            # --------------------------------------------------
+            cells = []
+            for (cx, cy, cw, ch) in raw_cells:
+                cells.append((cx + tx, cy + ty, cw, ch))
+
+            # --------------------------------------------------
+            # Phase 4: Map text → cells
+            # --------------------------------------------------
             cell_values = map_text_to_cells(
-                cells,
-                page_words,
-                scale_x,
-                scale_y
+                cells=cells,
+                page_words=page_words,
+                scale_x=scale_x,
+                scale_y=scale_y
             )
 
-            logger.info(
-                f"Page {page_idx} | Table {t_idx}: "
-                f"{len(cell_values)} cell values mapped"
-            )
-            
-            print(f"Cells detected: {len(cells)}")
-
-            cell_values = map_text_to_cells(
-                cells,
-                page_words,
-                scale_x,
-                scale_y
-            )
-
-            logger.info(
-                f"Page {page_idx} | Table {t_idx}: "
-                f"{len(cell_values)} cell values mapped"
-            )
-            
-            
-            # ------------------------------------------
-            # Phase 5: Reconstruct table 
-            # ------------------------------------------
-            
-            logger.info("Starting Phase 5")
-            print(f"\n[DEBUG] Starting Phase 5 | Page {page_idx} | Table {t_idx}")
-            
+            # --------------------------------------------------
+            # Phase 5: Reconstruct table
+            # --------------------------------------------------
             rows = group_cells_by_rows(cells, cell_values)
             table_2d = rows_to_2d_list(rows)
             df = build_dataframe(table_2d)
-            
+
             logger.info(
-            f"Page {page_idx} | Table {t_idx}: "
-            f"Table reconstructed with shape {df.shape}"
+                f"Page {page_idx} | Table {table_idx}: "
+                f"Reconstructed table with shape {df.shape}"
             )
 
-            logger.info("Phase 5 completed successfully")
-
-            # TEMP: display table
-            print(f"\n=== Page {page_idx} | Table {t_idx} ===")
-            print(df)
-            
-    # -----------------------------
-    # PHASE 6: Excel collection init
-    # -----------------------------      
-            
-            extracted_tables.append({
+            # Collect for Excel export
+            all_tables.append({
                 "page": page_idx,
-                "table": t_idx,
+                "table": table_idx,
                 "dataframe": df
             })
-            
-    # Final Excel Writing        
-    output_path = config["excel_output_path"]
-    output_dir = os.path.dirname(output_path)
-
-    # Ensure output directory exists (extra safe)
-    os.makedirs(output_dir, exist_ok=True)
-
-    if extracted_tables:
-        write_tables_to_excel(
-            tables=extracted_tables,
-            output_path=output_path
-        )
-        logger.info(f"Excel file created at {output_path}")
-    else:
-        logger.warning("No tables found. Excel file not generated.")       
-
-            
-
-            # TEMP: print first few cells for validation
-            for val in cell_values[:5]:
-                print(val)
 
     pdf.close()
-    logger.info("Phase 4 completed successfully")
+
+    # --------------------------------------------------
+    # Phase 6: Write Excel output
+    # --------------------------------------------------
+    if not all_tables:
+        logger.warning("No tables extracted. Excel file not created.")
+        return
+
+    write_tables_to_excel(
+        tables=all_tables,
+        output_path=config["excel_output_path"]
+    )
+
+    logger.info(
+        f"Excel successfully created at: {config['excel_output_path']}"
+    )
+
+
+if __name__ == "__main__":
+    main()

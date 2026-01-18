@@ -1,9 +1,9 @@
-pdf_input_path: "E:/Python/PDF-Data-Extraction-Tool/Input/sample_multi_page_project_pdf.pdf"
-excel_output_path: "E:/Python/PDF-Data-Extraction-Tool/Output/extracted_output.xlsx"
+pdf_input_path: "F:/PROJECTS/PDF Data Extraction Tool/Input/sample_multi_page_project_pdf.pdf"
+excel_output_path: "F:/PROJECTS/PDF Data Extraction Tool/Output/extracted_output.xlsx"
 log_path: "logs/app.log"
 
 text_extraction:
   use_text_flow: true
   keep_blank_chars: false
 
-poppler_path: "E:/Release-25.12.0-0/poppler-25.12.0/Library/bin"
+poppler_path: "D:/Release-25.12.0-0/poppler-25.12.0/Library/bin"
