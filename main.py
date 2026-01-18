@@ -24,6 +24,17 @@ from src.table_reconstructor import (
 
 from src.excel_writer import write_tables_to_excel
 
+def progress_bar(current, total, bar_length=40):
+    """
+    Display a progress bar in the console.
+    """
+    fraction = current / total
+    filled_length = int(bar_length * fraction)
+    bar = '█' * filled_length + '-' * (bar_length - filled_length)
+    percent = fraction * 100
+    print(f'\r|{bar}| {percent:.1f}% Complete', end='\r')
+    if current == total:
+        print()  # New line on completion
 
 def main():
     # --------------------------------------------------
@@ -54,7 +65,10 @@ def main():
     # --------------------------------------------------
     # Process each page
     # --------------------------------------------------
+    total_pages = len(pdf.pages)
+
     for page_idx, page in enumerate(pdf.pages, start=1):
+        progress_bar(page_idx, total_pages)
         logger.info(f"Processing Page {page_idx}")
 
         image = images[page_idx - 1]
